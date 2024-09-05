@@ -28,12 +28,12 @@
       <div
         class="container bg-warning border border-dark-subtle bg-transparent shadow rounded-pill"
       >
-        <form action="javascript:void(0)" onsubmit="addTask(this)">
+        <form action="javascript:void(0);" onsubmit="addTask(this)">
           <div class="row p-5">
-            <div class="col-7">
+            <div class="col-5">
               <input
                 type="text"
-                id="task"
+                id="taskInput"
                 class="form-control"
                 placeholder="Task"
                 aria-label="First name"
@@ -48,6 +48,12 @@
                 aria-label="Last name"
                 name="hour"
               />
+            </div>
+            <div class="col-2">
+              <select name="type" class="form-control" id="taskType">
+                <option value="good">Good</option>
+                <option value="bad">Bad</option>
+              </select>
             </div>
             <button type="submit" class="btn btn-primary col-3">
               Add Task
@@ -64,18 +70,18 @@
             <table class="table table-hover">
               <tbody id="goodList">
                 <!-- <tr>
-                  <th scope="row">1</th>
-                  <td>Task 1</td>
-                  <td>10hrs</td>
-                  <td class="text-end">
-                    <button type="button" class="btn btn-danger">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                    <button type="button" class="btn btn-success">
-                      <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                  </td>
-                </tr> -->
+                            <th scope="row">1</th>
+                            <td>Task 1</td>
+                            <td>10hrs</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </td>
+                        </tr> -->
               </tbody>
             </table>
           </div>
@@ -85,18 +91,18 @@
             <table class="table">
               <tbody id="badList">
                 <!-- <tr>
-                  <th scope="row">1</th>
-                  <td>Task 1</td>
-                  <td>10hrs</td>
-                  <td class="text-end">
-                    <button type="button" class="btn btn-warning">
-                      <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                  </td>
-                </tr> -->
+                            <th scope="row">1</th>
+                            <td>Task 1</td>
+                            <td>10hrs</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-warning">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr> -->
               </tbody>
             </table>
             <div class="alert alert-danger" role="alert">

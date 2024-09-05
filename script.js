@@ -9,7 +9,10 @@ const addTask = (myForm) => {
   const formData = new FormData(myForm);
   const task = formData.get("task");
   const hour = parseInt(formData.get("hour"));
-  console.log(task, hour);
+  const type = formData.get("type");
+
+  //   console.log(type);
+
   if (task == "" || hour == "") {
     alert("please enter the valid input.");
     return;
@@ -24,7 +27,7 @@ const addTask = (myForm) => {
     id,
     task,
     hour,
-    type: "good",
+    type,
   };
 
   taskList.push(taskObj);
@@ -36,23 +39,21 @@ const displayGoodList = () => {
   const goodListElement = document.getElementById("goodList");
 
   let goodListElementContent = "";
+  let goodIndex = 0;
   taskList.map((item, index) => {
     if (item.type == "good") {
+      goodIndex = goodIndex + 1;
       goodListElementContent += `
     <tr>
-                  <th scope="row">${index + 1}</th>
+                  <th scope="row">${goodIndex}</th>
                   <td>${item.task}</td>
-                  <td>${item.hour}hrs</td>
+                  <td>${item.hour} hrs</td>
                   <td class="text-end">
-                    <button type="button" class="btn btn-danger" onclick="deleteTask('${
-                      item.id
-                    }')">
+                    <button type="button" class="btn btn-danger" onclick="deleteTask('${item.id}')">
 
                       <i class="fa-solid fa-trash"></i>
                     </button>
-                    <button type="button" class="btn btn-success" onclick="switchTask('${
-                      item.id
-                    }')">
+                    <button type="button" class="btn btn-success" onclick="switchTask('${item.id}')">
                       <i class="fa-solid fa-arrow-right"></i>
                     </button>
                   </td>
@@ -69,22 +70,20 @@ const displayGoodList = () => {
   const badListElement = document.getElementById("badList");
 
   let badListElementContent = "";
+  let badIndex = 0;
   taskList.map((item, index) => {
     if (item.type == "bad") {
+      badIndex = badIndex + 1;
       badListElementContent += `
       <tr>
-                  <th scope="row">${index + 1}</th>
+                  <th scope="row">${badIndex}</th>
                   <td>${item.task}</td>
-                  <td>${item.hour}</td>
+                  <td>${item.hour} hrs</td>
                   <td class="text-end">
-                    <button type="button" class="btn btn-warning" onclick="switchTask('${
-                      item.id
-                    }')">
+                    <button type="button" class="btn btn-warning" onclick="switchTask('${item.id}')">
                       <i class="fa-solid fa-arrow-left"></i>
                     </button>
-                    <button type="button" class="btn btn-danger" onclick="deleteTask('${
-                      item.id
-                    }')">
+                    <button type="button" class="btn btn-danger" onclick="deleteTask('${item.id}')">
                       <i class="fa-solid fa-trash"></i>
                     </button>
                   </td>
@@ -105,6 +104,7 @@ const deleteTask = (id) => {
   taskList = taskList.filter((task) => {
     return task.id != id;
   });
+
   displayGoodList();
 };
 
